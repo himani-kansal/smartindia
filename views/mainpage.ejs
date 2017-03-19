@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hospital Management</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <meta content="himani kansal" name="author">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+ <header class="main-header">
+    <!-- Logo -->
+    <a class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>A</b>SIH</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Admin</b>SIH</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              <img src="" class="user-image" alt="">
+              <span class="hidden-xs">Smart India Hackathon</span>
+            </a>
+          </li>
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">Developers</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <!--<img src="himani.jpg" class="img-circle" alt="User Image">
+                <img src="vipin.jpg" class="img-circle" alt="User Image">-->
+                <p>
+                Team:- Evolve
+                  <small></small>
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/userlogout">
+              <span class="hidden-xs">User Logout</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><%- data.username %></p>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i>Home
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a><i class="fa fa-circle-o"></i>User Profile</a></li>
+            <li><a href="/history"><i class="fa fa-circle-o"></i>History</a></li>
+           
+          </ul>
+        </li>
+      
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        User Profile
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User Profile</li>
+      </ol>
+    </section>
+
+    <!-- Content Wrapper. Contains page content -->
+  <section class="content">
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-md-10">
+     
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%- data.username %></h3>
+
+        </div>
+        <div class="box-body">
+          <b>Aadhar NO.</b><%- data.aadharno  %>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <b>Phone No.</b><%- data.phoneno  %>
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+      </section>
+
+
+    </div>
+
+    </section>
+    
+
+    <!-- Main content -->
+    
+        <div id="wait" style="display:none;width:69px;height:89px;border:0px solid black;position:absolute;top:30%;left:50%;padding:2px;"><img src='loaderimage.gif' width="64" height="64" /><br>Loading..</div>
+        
+        
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      
+    </div>
+    <strong>Copyright &copy; 2017 <a href="">Evolve</a>.</strong> All rights
+    reserved.
+  </footer>
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- jQuery 2.2.3 -->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>
