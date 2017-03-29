@@ -6,7 +6,7 @@ var app=express();
 app.set('view engine','ejs');
 app.set('views',__dirname+'../views');
 
-mongoose.connect('mongodb://xxx:xxx@ds131340.mlab.com:31340/hospitalcentraldatabase1');
+mongoose.connect('mongodb://evolve:evolve@ds131340.mlab.com:31340/hospitalcentraldatabase1');
 
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,'connection error'));
@@ -26,13 +26,30 @@ var userSchema=mongoose.Schema({
 		type:String,
 		required:true
 	},
+	birthdate:{
+		type:String,
+		required:true
+	},
+	bloodgroup:{
+		type:String,
+		required:true
+	},
+	email:{
+		type:String,
+		required:true
+	},
 	phoneno:{
+		type:String,
+		required:true
+	},
+	address:{
 		type:String,
 		required:true
 	},
 	password:{
 		type:String,
-		required:true
+		required:true,
+		default:'evolve'
 	}
 
 });
@@ -52,10 +69,13 @@ var User=mongoose.model('User',userSchema);
 exports.addUser=function(req,res){
 	
 	var user=new User({
-	username:req.body.username,
-	aadharno:req.body.aadharno,
-	phoneno:req.body.phoneno,
-	password:req.body.password
+	username:req.query.name,
+	aadharno:req.query.aadhar,
+	birthdate:req.query.birth_date,
+	bloodgroup:req.query.blood_group,
+	email:req.query.email,
+	phoneno:req.query.phone,
+	address:req.query.address
 	});
 
 	user.save(function(err,info){
@@ -63,7 +83,19 @@ exports.addUser=function(req,res){
 		console.log('the user is saved successfully!! '+info);
 		res.send(info);
 	});
-}
+};
+
+exports.checkaadhar=function(req,res){
+	var aadhar=req.query.aadhar;
+	User.findOne({aadharno:aadhar},function(err,info){
+	if(info)
+		res.send(info);
+	else
+		res.send("Not exist");
+		
+
+	});
+};
 
 var doctorSchema=mongoose.Schema({
 	hospid:{
@@ -114,15 +146,29 @@ var historyschema=mongoose.Schema({
 	doctid:{
 		type:Number
 	},
+	docname:{
+		type:String
+	},
 	hospid:{
 		type:Number
 	},
-	issues:{
+	hospname:{
 		type:String
-
 	},
-	prescription:{
-		type:String,
+	date:{
+		type:String
+	},
+	issue:{
+		type:String
+	},
+	medicine:{
+		type:String
+	},
+	food:{
+		type:String
+	},
+	allergy:{
+		type:String
 	}
 
 });
@@ -141,16 +187,46 @@ var HHistory=mongoose.model('HHistory',historyschema);
 
 
 exports.addhistory=function(req,res){
+
+	Doctor.findOne({hospid:req.session.hospid,doctid:req.session.doctid},function(err,info){
+		if(info)
+		{
+			
+			console.log(info.docname);
+		
+	
 	var history=new HHistory({
 		uniqueid:req.session.uniqueid,
 		doctid:req.session.doctid,
+		docname:info.docname,
 		hospid:req.session.hospid,
-		issues:req.body.issues,
-		prescription:req.body.prescription
+		hospname:info.hospname,
+		issue:req.body.issue,
+		medicine:req.body.medicine,
+		food:req.body.food,
+		allergy:req.body.allergy,
+		date:req.body.date
 	});
 	history.save(function(err,info){
 		console.log(info);
 		res.redirect('/history');
+
+	});
+	}
+	});
+};
+
+exports.checkhistory=function(req,res){
+	var uniqueid=req.query.uniqueid;
+	HHistory.find({uniqueid:uniqueid},function(err,info){
+	if(info)
+		{
+			res.send(info);
+			console.log(info);
+		}
+	else
+		res.send("Not exist");
+		
 
 	});
 };
@@ -251,6 +327,7 @@ exports.doctorlogout=function(req,res){
 	req.session.hospid=null;
 	res.redirect('/');
 };
+
 
 
 //module.exports=User;

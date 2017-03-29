@@ -136,14 +136,24 @@
               <table class="table table-hover">
                 <tr>
                   <th>UserID</th>
+                  <th>Hospital Name</th>
+                  <th>Doctor Name</th>
                   <th>Issues</th>
-                  <th>Prescription</th>
+                  <th>Medicines</th>
+                  <th>Food</th>
+                  <th>Allergy</th>
+                  <th>Date</th>
                 </tr>
                 <% data.forEach(function(user){ %>
                 <tr>
                   <td><%=  user.uniqueid %></td>
-                  <td><%=  user.issues %></td>
-                  <td><%=  user.prescription %></td>
+                  <td><%=  user.hospname %></td>
+                  <td><%=  user.docname %></td>
+                  <td><%=  user.issue %></td> 
+                  <td><%=  user.medicine %></td>
+                  <td><%=  user.food %></td>
+                  <td><%= user.allergy %></td>
+                  <td><%= user.date %></td>
                 </tr>
                <%  }) %>
                 
@@ -155,28 +165,51 @@
         </section>
      
 
-      <section class="col-md-5">
+      <section class="col-md-3">
         <form action="/addhistory" method="post">        
                 <label>Issues</label>
                 <div class="form-group">
           
-                  <textarea name="issues" rows="9" cols="55">
+                  <textarea name="issue" rows="4" cols="55">
                     
                   </textarea>
                 </div>
                 
 
                <br />   
-                <label>Prescription</label>
+                <label>Medicines</label>
                 <div class="form-group">
           
-                  <textarea name="prescription" rows="9" cols="55">
+                  <textarea name="medicine" rows="4" cols="55">
                     
                   </textarea>
                 </div>
                 
 
                <br />   
+                <br />   
+                <label>Food</label>
+                <div class="form-group">
+          
+                  <textarea name="food" rows="4" cols="55">
+                    
+                  </textarea>
+                </div>
+                 <br />   
+                <label>allergy</label>
+                <div class="form-group">
+          
+                  <textarea name="allergy" rows="4" cols="55">
+                    
+                  </textarea>
+                </div>
+                 <br />   
+                <label>Date</label>
+                <div class="form-group">
+          
+                 <input type="text" name="date" />
+                </div>
+
             
               <div class="form-group">
                 <input type="submit" class="btn btn-primary"  value="Submit">

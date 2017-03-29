@@ -28,6 +28,10 @@ app.use(express.static(__dirname+'/public'));
 
 app.get('/',routes);
 
+app.get('/api/register',db.addUser);
+app.get('/api/checkaadhar',db.checkaadhar);
+app.get('/api/checkhistory',db.checkhistory);
+
 app.post('/newuser',db.addUser);
 app.get('/newDoctor',db.addDoctor);
 
