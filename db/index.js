@@ -2,7 +2,6 @@ var mongoose=require('mongoose');
 var autoIncrement=require('mongoose-auto-increment');
 var express=require('express');
 var app=express();
-//var http=require('');
 
 app.set('view engine','ejs');
 app.set('views',__dirname+'../views');
@@ -275,8 +274,11 @@ exports.loginDoctor=function(req,res){
 
 };
 
+
+
 exports.enterUser=function(req,res){
 	uniqueid=req.body.uniqueid;
+
 	User.findOne({uniqueid:uniqueid},function(err,user){
 		if(user)
 		{console.log(uniqueid);

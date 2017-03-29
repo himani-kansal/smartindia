@@ -16,6 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <header class="main-header">
@@ -80,14 +81,14 @@
         		<form action="/userenter" method="post">        
                 <div class="form-group">
                   <label>User Id</label>
-                  <input type="text" class="form-control" placeholder="User Id" name="uniqueid">
+                  <input type="text" class="form-control" placeholder="User Id" name="uniqueid" id="uniqueid">
                 </div>
                 
 
      <br />   
             
               <div class="box-footer">
-                <input type="submit" class="btn btn-primary"  value="Submit">
+                 <input type="submit" class="btn btn-primary"  value="Submit">
               </div>
 
               </form>
@@ -96,6 +97,40 @@
         <!-- /.col-->
       </div>
       <!-- ./row -->
+      <div class="row">
+      <div class="col-md-2"></div>
+        <div class="col-md-8">
+           <div class="box-body table-responsive no-padding">
+              <table class="table table-hover" id="tt">
+                <tr>
+                  <th>Serial No.</th>
+                  <th>UserID</th>
+                  <th>UserName</th>
+                  <th>Call</th>
+                  <th>Profile</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>Himani kansal</td>
+                  <td><button>Call</button></td>
+                  <td><a href="/userprofile">Link To profile</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>Rahul Yadav</td>
+                  <td><button>Call</button></td>
+                  <td><a href="/userprofile">Link To profile</td>
+                </tr>
+
+
+               
+              </table>
+            </div>
+        </div>
+      </div>
+
     </section>
 
 

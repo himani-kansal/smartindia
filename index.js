@@ -7,6 +7,26 @@ var session=require('express-session');
 
 var app=express();
 
+//for sockets
+var http=require('http').Server(app);
+var io=require('socket.io')(http);
+var path=require('path');
+
+//two events created 1) new user added 2)call user 
+io.on('connection',function(socket){
+	socket.on('useradded',function(uniqueid){
+		io.emit('useradded',uniqueid);
+	});
+	socket.on('calluser',function(uniqueid){
+		io.emit('calluser',uniqueid);
+	});
+});
+
+
+
+
+
+
 app.use(cookieParser());
 app.use(session({
 	secret:'ssshh',
