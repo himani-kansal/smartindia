@@ -184,7 +184,7 @@
           <!-- LINE CHART -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Blood Group Month Wise</h3>
+              <h3 class="box-title">Blood Group Area Wise</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -472,6 +472,33 @@
       ]
     };
 
+
+     var areaChartData1 = {
+      labels: ["Pune", "Mumbai", "Delhi", "Bangalore", "Noida", "Jaipur", "Chennai"],
+      datasets: [
+        {
+          label: "A+",
+          fillColor: "rgba(210, 214, 222, 1)",
+          strokeColor: "rgba(210, 214, 222, 1)",
+          pointColor: "rgba(210, 214, 222, 1)",
+          pointStrokeColor: "#c1c7d1",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: "A-",
+          fillColor: "rgba(60,141,188,0.9)",
+          strokeColor: "rgba(60,141,188,0.8)",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    };
+
     var areaChartOptions = {
       //Boolean - If we should show the scale at all
       showScale: true,
@@ -521,7 +548,7 @@
     var lineChart = new Chart(lineChartCanvas);
     var lineChartOptions = areaChartOptions;
     lineChartOptions.datasetFill = false;
-    lineChart.Line(areaChartData, lineChartOptions);
+    lineChart.Line(areaChartData1, lineChartOptions);
 
     //-------------
     //- PIE CHART -
