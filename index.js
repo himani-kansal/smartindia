@@ -7,24 +7,6 @@ var session=require('express-session');
 
 var app=express();
 
-//for sockets
-var http=require('http').Server(app);
-var io=require('socket.io')(http);
-var path=require('path');
-
-//two events created 1) new user added 2)call user 
-io.on('connection',function(socket){
-	socket.on('useradded',function(uniqueid){
-		io.emit('useradded',uniqueid);
-	});
-	socket.on('calluser',function(uniqueid){
-		io.emit('calluser',uniqueid);
-	});
-});
-
-
-
-
 
 
 app.use(cookieParser());
@@ -48,9 +30,12 @@ app.use(express.static(__dirname+'/public'));
 
 app.get('/',routes);
 
+app.get('/bloodgroup',db.bloodgroup);
+
 app.get('/api/register',db.addUser);
 app.get('/api/checkaadhar',db.checkaadhar);
 app.get('/api/checkhistory',db.checkhistory);
+app.get('/api/useradd',db.useradd);
 
 app.post('/newuser',db.addUser);
 app.get('/newDoctor',db.addDoctor);
@@ -61,6 +46,7 @@ app.post('/addhistory',db.addhistory);
 
 app.get('/userprofile',db.userprofile);
 app.get('/history',db.userHistory);
+
 
 
 app.get('/userlogout',db.userlogout);

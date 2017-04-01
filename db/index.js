@@ -97,6 +97,9 @@ exports.checkaadhar=function(req,res){
 	});
 };
 
+
+
+
 var doctorSchema=mongoose.Schema({
 	hospid:{
 		type:Number
@@ -231,6 +234,19 @@ exports.checkhistory=function(req,res){
 	});
 };
 
+
+exports.useradd=function(req,res){
+	var uniqueid=req.query.uniqueid;
+	User.findOne({uniqueid:uniqueid},function(err,info){
+	if(info)
+		{
+			res.render('useridenter',{data:info});
+		}
+
+	});
+
+};
+
 exports.addDoctor=function(req,res){
 	var doctor=new Doctor({
 		hospid:1,
@@ -307,6 +323,11 @@ exports.userprofile=function(req,res){
 		}
 	});
 };
+
+exports.bloodgroup=function(req,res){
+		res.render('bloodgroup');
+}
+
 
 exports.userHistory=function(req,res){
 	
